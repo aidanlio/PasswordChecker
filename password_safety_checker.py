@@ -1,12 +1,10 @@
 from getpass import getpass
-import re
 
-pattern = '([\w+\[\]]+)(?=\([\w+,]*\))'
-#special_characters = " !\\#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+special_characters = " !\\#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
 print("This tool utilizes the annual Hive Systems Password Table \n This information provided should only be used as a guide and not as a means of ensuring security")
 password=getpass("Please enter your password? ")
-result = re.match(pattern, password)
+
 
 def main():
     if len(password) >= 19:
@@ -91,7 +89,7 @@ def bothcase():
         print("Congratulations! This password would take roughly 126 billion years to crack!")
 
 def alphanum():
-    if result == True:
+    if special_characters in password:
         if len(password) <= 6:
             print("This password would be cracked instantly")
         if len(password) == 7:
