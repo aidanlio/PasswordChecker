@@ -1,10 +1,10 @@
 from getpass import getpass
 
-special_characters = " !\\#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+special_characters = ["!", "\" "" #", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", ""]", "^", "_", "`", "{", "|", "}", "~", ]
 
 print("This tool utilizes the annual Hive Systems Password Table \n This information provided should only be used as a guide and not as a means of ensuring security")
-password=getpass("Please enter your password? ")
-
+password = getpass("Please enter your password? ")
+spec_Char = any(i in password for i in special_characters)
 
 def main():
     if len(password) >= 19:
@@ -15,7 +15,7 @@ def main():
         lowercase()
     elif password.isalpha() == True and password.islower() == False:
         bothcase()
-    elif password.isalnum() == True and password.islower() == False:
+    else:
         alphanum()
 
 def digit():
@@ -82,14 +82,14 @@ def bothcase():
     if len(password) == 15:
         print("This password would take about 898k years to crack")
     if len(password) == 16:
-        print("This password would take roughly 46 million years to crack")
+        print("This passwo!@#$%^rd would take roughly 46 million years to crack")
     if len(password) == 17:
         print("This password would take roughly 2 billion years to crack")
     if len(password) == 18:
         print("Congratulations! This password would take roughly 126 billion years to crack!")
 
 def alphanum():
-    if special_characters in password:
+    if spec_Char == True:
         if len(password) <= 6:
             print("This password would be cracked instantly")
         if len(password) == 7:
